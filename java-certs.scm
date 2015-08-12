@@ -20,6 +20,7 @@
 (define-module (java-certs)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
+  #:use-module (guix download)
   #:use-module (guix build-system trivial)
   #:use-module (gnu packages))
 
@@ -28,7 +29,13 @@
   (package
     (name "java-certs")
     (version "1.0")
-    (source ("/home/yenda/src/guix/cacerts" "cacerts"))
+    (source
+     (origin
+      (method url-fetch)
+      (uri (string-append "https://github.com/yenda/guix-packages/raw/master/" "cacerts"))
+      (sha256
+       (base32
+        "1ksxkbvhx1ga6yr5l7h6yxx5kqnvk1cxbyg8d7xd55anbaq8vi6x"))))
     (build-system trivial)
     (arguments
      `(#:modules ((guix build utils))
