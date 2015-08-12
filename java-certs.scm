@@ -1,6 +1,5 @@
 ;;; GNU Guix --- Functional package management for GNU
-;;; Copyright © 2015 Andreas Enge <andreas@enge.fr>
-;;; Copyright © 2015 Mark H Weaver <mhw@netris.org>
+;;; Copyright © 2015 Eric Dvorsak <eric@dvorsak.fr>
 ;;;
 ;;; This file is part of GNU Guix.
 ;;;
@@ -32,23 +31,25 @@
     (source
      (origin
       (method url-fetch)
-      (uri (string-append "https://github.com/yenda/guix-packages/raw/master/" "cacerts"))
+      (uri "file:///tmp/cacerts")
       (sha256
        (base32
         "1ksxkbvhx1ga6yr5l7h6yxx5kqnvk1cxbyg8d7xd55anbaq8vi6x"))))
-    (build-system trivial)
+    (build-system trivial-build-system)
     (arguments
      `(#:modules ((guix build utils))
        #:builder
        (begin
          (use-modules (guix build utils))
-         (let ((certsdir (string-append %output "/etc/ssl/certs/java")))
+         (let ((source (assoc-ref %build-inputs "source"))
+               (certsdir (string-append %output "/etc/ssl/certs/java")))
            (mkdir-p certsdir)
            (copy-file source (string-append certsdir "/cacerts"))))))
     (native-inputs
      `(("source" ,source)))
+    (home-page "")
     (synopsis "Java CA certificates from Debian")
     (description
      "This package provides certificates for Certification Authorities (CA)
-taken from the NSS package and thus ultimately from the Mozilla project."))
-  (license license:gpl2+))
+taken from the NSS package and thus ultimately from the Mozilla project.")
+  (license license:gpl2+)))
