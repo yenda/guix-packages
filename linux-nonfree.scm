@@ -41,7 +41,7 @@
               (method git-fetch)
               (uri (git-reference
                     (url "git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git")
-                    (commit version)))
+                      (commit version)))
               (sha256
                (base32
                 "1lpqigsw93xswcxw9ykxmms2smx86070mg51jqpf7n9w9h6jjs79"))))
@@ -84,7 +84,7 @@
                 (uri (linux-nonfree-urls version))
                 (sha256
                  (base32
-                  "14argl6ywkggdvgiycfx4jl2d7290f631ly59wfggj4vjx27sbqg"))))
+                  "17whsim5l9i486y5kchfpm9jhbr9lak4a1gdqygp5kwfrfyz5qiy"))))
       (synopsis "Mainline Linux kernel, nonfree binary blobs included.")
       (description "Linux is a kernel.")
       (license gpl2)
