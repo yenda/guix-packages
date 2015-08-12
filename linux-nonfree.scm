@@ -23,7 +23,7 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with GNU Guix.  If not, see <http://www.gnu.org/licenses/>.
 
-(define-module (gnu packages linux-nonfree)
+(define-module (linux-nonfree)
   #:use-module ((guix licenses) #:hide (zlib))
   #:use-module (gnu packages linux)
   #:use-module (guix build-system trivial)
