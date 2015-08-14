@@ -135,7 +135,7 @@
     (home-page "http://software.schmorp.de/pkg/libev.html")
     (synopsis "An event loop that is loosely modelled after libevent")
     (description "A full-featured and high-performance event loop that is loosely modelled after libevent, but without its limitations and bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode, auditd, the Deliantra MORPG Server and Client, and many other programs.")
-    (license bsd-style)))
+    (license non-copyleft)))
 
 (define-public i3
   (package
@@ -179,4 +179,4 @@
     (home-page "http://i3wm.org/")
     (synopsis "Improved tiling window manager")
     (description "i3 is a tiling window manager, completely written from scratch.  The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license.  i3 is primarily targeted at advanced users and developers.")
-    (license bsd-style)))
+    (license bsd-3)))
