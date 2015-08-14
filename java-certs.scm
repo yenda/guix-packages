@@ -31,7 +31,7 @@
     (source
      (origin
       (method url-fetch)
-      (uri "file:///tmp/cacerts")
+      (uri "file:///home/yenda/src/guix/packages/cacerts")
       (sha256
        (base32
         "1ksxkbvhx1ga6yr5l7h6yxx5kqnvk1cxbyg8d7xd55anbaq8vi6x"))))

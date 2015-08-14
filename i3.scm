@@ -18,6 +18,7 @@
 
 (define-module (i3)
   #:use-module (guix licenses)
+  #:use-module (guix packages)
   #:use-module (gnu packages linux)
   #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
@@ -185,13 +186,14 @@
      `(#:make-flags (list "CC=gcc" (string-append "PREFIX=" %output))
        #:phases
        (modify-phases %standard-phases
-         (delete 'configure))))
+         (delete 'configure)
+         (delete 'check))))
     (inputs
      `(("openlibm" ,openlibm)
        ("libconfuse" ,libconfuse)
        ("libyajl" ,libyajl)
        ("alsa-lib" ,alsa-lib)
-       ("libiw" ,libiw)
+       ("wireless-tools" ,wireless-tools)
        ("libcap" ,libcap)
        ("asciidoc" ,asciidoc)))
     (home-page "http://i3wm.org/i3status/")
