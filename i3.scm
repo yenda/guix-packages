@@ -17,7 +17,7 @@
 ;;; along with GNU Guix.  If not, see <http://www.gnu.org/licenses/>.
 
 (define-module (i3)
-  #:use-module ((guix licenses))
+  #:use-module (guix licenses)
   #:use-module (gnu packages linux)
   #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
@@ -59,7 +59,7 @@
     (synopsis "Port of libxcursor")
     (description "Port of libxcursor.")
     (license
-     (license:non-copyleft
+     (non-copyleft
       "file://COPYING"
       "See COPYING in the distribution."))))
 
@@ -78,7 +78,7 @@
     (home-page "https://lloyd.github.io/yajl/")
     (synopsis "C library for parsing JSON")
     (description "Yet Another JSON Library.  YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a small validating JSON generator.")
-    (license ics)))
+    (license isc)))
 
 
 (define-public perl-pod-simple
@@ -87,14 +87,16 @@
     (version "3.30_1")
     (source (origin
               (method url-fetch)
-              (uri (string-append "http://search.cpan.org/CPAN/authors/id/M/MA/MARCGREEN/Pod-Simple-" version ".tar.gz"))
+              (uri (string-append "http://search.cpan.org/CPAN/authors/id/M/MA/MARCGREEN/Pod-Simple-"
+                                  version
+                                  ".tar.gz"))
               (sha256
                (base32
                 "0yzy7mw2jriwcywmh38csjqrwxj207b2b7rlpvkdh1rq5828hary"))))
     (build-system perl-build-system)
     (home-page "http://search.cpan.org/~marcgreen/Pod-Simple/lib/Pod/Simple.pod")
     (synopsis "Parsing library for text in Pod format")
-    (description "Pod::Simple is a Perl library for parsing text in the Pod ("plain old documentation") markup language that is typically used for writing documentation for Perl and for Perl modules.")
+    (description "Pod::Simple is a Perl library for parsing text in the Pod (plain old documentation) markup language that is typically used for writing documentation for Perl and for Perl modules.")
     (license (package-license perl))))
 
 
@@ -139,7 +141,7 @@
     (synopsis "An event loop that is loosely modelled after libevent")
     (description "A full-featured and high-performance event loop that is loosely modelled after libevent, but without its limitations and bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode, auditd, the Deliantra MORPG Server and Client, and many other programs.")
     (license
-     (license:non-copyleft
+     (non-copyleft
       "file://LICENSE"
       "See LICENSE in the distribution."))))
 
