@@ -45,26 +45,20 @@
                (base32
                 "0hgqxlg78lal7zpk3lnl85lzdlv3967qmr8mivg2dnxjyliv45kd"))))
     (build-system gnu-build-system)
-        (arguments '(#:phases
+    (arguments '(#:phases
                  (alist-cons-after
                   'unpack 'autoconf
                   (lambda _
                     (zero? (system* "autoreconf" "-vfi")))
                   %standard-phases)))
-            (native-inputs
+    (native-inputs
      `(("automake" ,automake)
        ("autoconf" ,autoconf)
        ("libtool" ,libtool)))
-
-         ;; (arguments
-    ;;  `(#:phases
-    ;;    (modify-phases %standard-phases
-    ;;      (delete 'configure))))
     (home-page "")
-    (synopsis "Non-free firmware for Radeon integrated chips")
-    (description "Non-free firmware for Radeon integrated chips")
-    ;; FIXME: What license?
-    (license (non-copyleft "http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=blob_plain;f=LICENCE.radeon_firmware;hb=HEAD"))))
+    (synopsis "")
+    (description "")
+    (license bsd-style)))
 
 
 (define-public libyajl
@@ -78,9 +72,9 @@
                (base32
                 "0nmcqpaiq4pv7dymyg3n3jsd57yhp5npxl26a1hzw3m3lmj37drz"))))
     (build-system cmake-build-system)
-    (home-page "http://i3wm.org/")
-    (synopsis "Improved tiling window manager")
-    (description "i3 is a tiling window manager, completely written from scratch.  The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license.  i3 is primarily targeted at advanced users and developers.")
+    (home-page "")
+    (synopsis "")
+    (description "")
     (license bsd-style)))
 
 
