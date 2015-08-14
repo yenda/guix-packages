@@ -22,7 +22,6 @@
   #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
   #:use-module (guix build-system perl)
-  #:use-module (guix packages)
   #:use-module (gnu packages base)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages perl)
@@ -34,6 +33,7 @@
   #:use-module (gnu packages docbook)
   #:use-module (gnu packages pcre)
   #:use-module (gnu packages gtk)
+  #:use-module (gnu packages maths)
   #:use-module (guix download)
   #:use-module (guix git-download))
 
@@ -188,6 +188,41 @@
     (license gpl2)))
 
 ;;; undeclared libl dependency caused this error during build :
+
+;; ld: /gnu/store/shi6xf1psgkjyfps4x2572m6qwxf4lf3-libiw-30.pre9/lib/libiw.a(iwlib.so): undefined reference to symbol 'trunc@@GLIBC_2.2.5'
+;; /gnu/store/w29667jfv02s1hgmv0yp7nqyywvdv1fz-glibc-2.21/lib/libm.so.6: error adding symbols: DSO missing from command line
+;; collect2: error: ld returned 1 exit status
+
+(define-public i3status
+  (package
+    (name "i3status")
+    (version "2.9")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "http://i3wm.org/i3status/i3status-" version ".tar.bz2"))
+              (sha256
+               (base32
+                "1qwxbrga2fi5wf742hh9ajwa8b2kpzkjjnhjlz4wlpv21i80kss2"))))
+    (build-system gnu-build-system)
+    (arguments
+     `(#:make-flags (list "CC=gcc" (string-append "PREFIX=" %output))
+       #:phases
+       (modify-phases %standard-phases
+         (delete 'configure))))
+    (inputs
+     `(("openlibm" ,openlibm)
+       ("libconfuse" ,libconfuse)
+       ("libyajl" ,libyajl)
+       ("alsa-lib" ,alsa-lib)
+       ("libiw" ,libiw)
+       ("libcap" ,libcap)
+       ("asciidoc" ,asciidoc)))
+    (home-page "http://i3wm.org/i3status/")
+    (synopsis "Generating a status bar for i3bar, dzen2, xmobar or similar programs")
+    (description "i3status is a small program for generating a status bar for i3bar, dzen2, xmobar or similar programs.  It is designed to be very efficient by issuing a very small number of system calls, as one generally wants to update such a status line every second. This ensures that even under high load, your status bar is updated correctly.  Also, it saves a bit of energy by not hogging your CPU as much as spawning the corresponding amount of shell commands would.")
+    (license bsd-3)))
+
+
 (define-public i3
   (package
     (name "i3")
