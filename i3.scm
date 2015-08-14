@@ -164,6 +164,30 @@
     (license isc)))
 
 
+(define-public libiw
+  (package
+    (name "libiw")
+    (version "30.pre9")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools."
+                                  version
+                                  ".tar.gz"))
+              (sha256
+               (base32 "0qscyd44jmhs4k32ggp107hlym1pcyjzihiai48xs7xzib4wbndb"))))
+    (build-system gnu-build-system)
+    (arguments
+     `(#:make-flags (list "CC=gcc" (string-append "PREFIX=" %output))
+       #:phases
+       (modify-phases %standard-phases
+         (delete 'configure)
+         (delete 'check))))
+    (home-page "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html")
+    (synopsis "Set of tools allowing to manipulate the Wireless Extensions")
+    (description " The Wireless Tools (WT) is a set of tools allowing to manipulate the Wireless Extensions.  The Wireless Extension (WE) is a generic API allowing a driver to expose to the user space configuration and statistics specific to common Wireless LANs.  The beauty of it is that a single set of tool can support all the variations of Wireless LANs, regardless of their type (as long as the driver support Wireless Extension).  Another advantage is these parameters may be changed on the fly without restarting the driver (or Linux).")
+    (license gpl2)))
+
+;;; undeclared libl dependency caused this error during build :
 (define-public i3
   (package
     (name "i3")
