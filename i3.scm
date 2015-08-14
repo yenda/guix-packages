@@ -72,10 +72,10 @@
                (base32
                 "0nmcqpaiq4pv7dymyg3n3jsd57yhp5npxl26a1hzw3m3lmj37drz"))))
     (build-system cmake-build-system)
-    (home-page "")
-    (synopsis "")
-    (description "")
-    (license bsd-style)))
+    (home-page "https://lloyd.github.io/yajl/")
+    (synopsis "C library for parsing JSON")
+    (description "Yet Another JSON Library.  YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a small validating JSON generator.")
+    (license ics)))
 
 
 (define-public perl-pod-simple
@@ -89,10 +89,10 @@
                (base32
                 "0yzy7mw2jriwcywmh38csjqrwxj207b2b7rlpvkdh1rq5828hary"))))
     (build-system perl-build-system)
-    (home-page "")
-    (synopsis "")
-    (description "")
-    (license bsd-style)))
+    (home-page "http://search.cpan.org/~marcgreen/Pod-Simple/lib/Pod/Simple.pod")
+    (synopsis "Parsing library for text in Pod format")
+    (description "Pod::Simple is a Perl library for parsing text in the Pod ("plain old documentation") markup language that is typically used for writing documentation for Perl and for Perl modules.")
+    (license (package-license perl))))
 
 
 (define-public libsn
@@ -113,10 +113,10 @@
      `(("libx11" ,libx11)
        ("xcb-util" ,xcb-util)))
     (build-system gnu-build-system)
-    (home-page "")
-    (synopsis "")
-    (description "")
-    (license bsd-style)))
+    (home-page "https://wiki.freedesktop.org/www/Software/startup-notification/")
+    (synopsis "Reference implementation of the startup notification protocol")
+    (description "Startup-notification contains a reference implementation of the startup notification protocol.  The reference implementation is mostly under an X Window System style license, and has no special dependencies.")
+    (license gpl2)))
 
 
 (define-public libev
@@ -132,9 +132,9 @@
                (base32
                 "17j47pbkr65a18mfvy2861p5k7w4pxmdgiw723ryfqd9gx636w7q"))))
     (build-system gnu-build-system)
-    (home-page "")
-    (synopsis "")
-    (description "")
+    (home-page "http://software.schmorp.de/pkg/libev.html")
+    (synopsis "An event loop that is loosely modelled after libevent")
+    (description "A full-featured and high-performance event loop that is loosely modelled after libevent, but without its limitations and bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode, auditd, the Deliantra MORPG Server and Client, and many other programs.")
     (license bsd-style)))
 
 (define-public i3
@@ -152,15 +152,8 @@
      `(#:make-flags (list "CC=gcc" (string-append "PREFIX=" %output))
        #:phases
        (modify-phases %standard-phases
-         (delete 'configure) (delete 'check)
-    ;;      (replace
-    ;;       'check
-    ;;       (lambda _
-    ;;        (substitute* 
-    ;;           (("/usr/bin") (%store-directory))
-    ;;           (("usr") (car (filter (negate string-null?)
-         ;;                                 (string-split (%store-directory) #\/)))))))
-         )))
+         (delete 'configure)
+         (delete 'check))))
     (inputs
      `(("libxcb" ,libxcb)
        ("xcb-util" ,xcb-util)
