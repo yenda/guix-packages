@@ -58,7 +58,10 @@
     (home-page "http://cgit.freedesktop.org/xcb/util-cursor/")
     (synopsis "Port of libxcursor")
     (description "Port of libxcursor.")
-    (license bsd-style)))
+    (license
+     (license:non-copyleft
+      "file://COPYING"
+      "See COPYING in the distribution."))))
 
 
 (define-public libyajl
@@ -135,7 +138,10 @@
     (home-page "http://software.schmorp.de/pkg/libev.html")
     (synopsis "An event loop that is loosely modelled after libevent")
     (description "A full-featured and high-performance event loop that is loosely modelled after libevent, but without its limitations and bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode, auditd, the Deliantra MORPG Server and Client, and many other programs.")
-    (license non-copyleft)))
+    (license
+     (license:non-copyleft
+      "file://LICENSE"
+      "See LICENSE in the distribution."))))
 
 (define-public i3
   (package
