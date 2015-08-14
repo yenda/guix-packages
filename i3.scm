@@ -23,6 +23,7 @@
   #:use-module (guix build-system cmake)
   #:use-module (guix build-system perl)
   #:use-module (guix packages)
+  #:use-module (gnu packages base)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages perl)
   #:use-module (gnu packages xorg)
@@ -117,6 +118,25 @@
     (description "")
     (license bsd-style)))
 
+
+(define-public libev
+  (package
+    (name "libev")
+    (version "4.20")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "http://dist.schmorp.de/libev/libev-"
+                                  version
+                                  ".tar.gz"))
+              (sha256
+               (base32
+                "17j47pbkr65a18mfvy2861p5k7w4pxmdgiw723ryfqd9gx636w7q"))))
+    (build-system gnu-build-system)
+    (home-page "")
+    (synopsis "")
+    (description "")
+    (license bsd-style)))
+
 (define-public i3
   (package
     (name "i3")
@@ -129,34 +149,41 @@
                 "1lq7h4w7m0hi31iva8g7yf1sc11ispnknxjdaj9agld4smxqb44j"))))
     (build-system gnu-build-system)
     (arguments
-     `(#:phases
+     `(#:make-flags (list "CC=gcc" (string-append "PREFIX=" %output))
+       #:phases
        (modify-phases %standard-phases
-         (delete 'configure))))
+         (delete 'configure) (delete 'check)
+    ;;      (replace
+    ;;       'check
+    ;;       (lambda _
+    ;;        (substitute* 
+    ;;           (("/usr/bin") (%store-directory))
+    ;;           (("usr") (car (filter (negate string-null?)
+         ;;                                 (string-split (%store-directory) #\/)))))))
+         )))
     (inputs
      `(("libxcb" ,libxcb)
        ("xcb-util" ,xcb-util)
+       ("xcb-util-cursor" ,xcb-util-cursor)
+       ("xcb-util-keysyms" ,xcb-util-keysyms)
+       ("xcb-util-wm" ,xcb-util-wm)
        ("libxkbcommon" ,libxkbcommon)
-       ("libxcursor" ,libxcursor)
-       ("libevdev" ,libevdev)
+       ("libev" ,libev)
        ("libyajl" ,libyajl)
        ("asciidoc" ,asciidoc)
        ("xmlto" ,xmlto)
        ("perl-pod-simple" ,perl-pod-simple)
        ("docbook-xml" ,docbook-xml)
-       ("pcre" ,pcre)
        ("libx11" ,libx11)
+       ("pcre" ,pcre)
+       ("libsn" ,libsn)
        ("pango" ,pango)
        ("cairo" ,cairo)))
     (native-inputs
-     `(("perl" ,perl)
+     `(("which" ,which)
+       ("perl" ,perl)
        ("pkg-config" ,pkg-config)))
     (home-page "http://i3wm.org/")
     (synopsis "Improved tiling window manager")
     (description "i3 is a tiling window manager, completely written from scratch.  The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license.  i3 is primarily targeted at advanced users and developers.")
     (license bsd-style)))
-
-
-
-
-
-
