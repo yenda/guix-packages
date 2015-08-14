@@ -21,6 +21,7 @@
   #:use-module (gnu packages linux)
   #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
+  #:use-module (guix build-system perl)
   #:use-module (guix packages)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages perl)
@@ -28,36 +29,34 @@
   #:use-module (gnu packages qt)
   #:use-module (gnu packages asciidoc)
   #:use-module (gnu packages xml)
-  #:use-module (gnu packages autotools)
+  #:use-module (gnu packages m4)
+  #:use-module (gnu packages docbook)
+  #:use-module (gnu packages pcre)
+  #:use-module (gnu packages gtk)
   #:use-module (guix download)
   #:use-module (guix git-download))
 
-(define-public util-cursor
+(define-public xcb-util-cursor
   (package
-    (name "util-cursor")
+    (name "xcb-util-cursor")
     (version "0.1.2")
     (source (origin
-              (method git-fetch)
-              (uri (git-reference
-                    (url "git://anongit.freedesktop.org/xcb/util-cursor")
-                      (commit "8eb844d39a06f42019dede515c70e7a0b155357d")))
+              (method url-fetch)
+              (uri (string-append "http://xcb.freedesktop.org/dist/xcb-util-cursor-" version ".tar.gz"))
               (sha256
                (base32
-                "0hgqxlg78lal7zpk3lnl85lzdlv3967qmr8mivg2dnxjyliv45kd"))))
+                "0bm0mp99abdfb6v4v60hq3msvk67b2x9ml3kbx5y2g18xdhm3rdr"))))
     (build-system gnu-build-system)
-    (arguments '(#:phases
-                 (alist-cons-after
-                  'unpack 'autoconf
-                  (lambda _
-                    (zero? (system* "autoreconf" "-vfi")))
-                  %standard-phases)))
     (native-inputs
-     `(("automake" ,automake)
-       ("autoconf" ,autoconf)
-       ("libtool" ,libtool)))
-    (home-page "")
-    (synopsis "")
-    (description "")
+     `(("m4" ,m4)
+       ("pkg-config" ,pkg-config)))
+    (inputs
+     `(("libxcb" ,libxcb)
+       ("xcb-util-renderutil" ,xcb-util-renderutil)
+       ("xcb-util-image" ,xcb-util-image)))
+    (home-page "http://cgit.freedesktop.org/xcb/util-cursor/")
+    (synopsis "Port of libxcursor")
+    (description "Port of libxcursor.")
     (license bsd-style)))
 
 
@@ -77,6 +76,46 @@
     (description "")
     (license bsd-style)))
 
+
+(define-public perl-pod-simple
+  (package
+    (name "perl-pod-simple")
+    (version "3.30_1")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "http://search.cpan.org/CPAN/authors/id/M/MA/MARCGREEN/Pod-Simple-" version ".tar.gz"))
+              (sha256
+               (base32
+                "0yzy7mw2jriwcywmh38csjqrwxj207b2b7rlpvkdh1rq5828hary"))))
+    (build-system perl-build-system)
+    (home-page "")
+    (synopsis "")
+    (description "")
+    (license bsd-style)))
+
+
+(define-public libsn
+  (package
+    (name "libsn")
+    (version "0.12")
+    (source (origin
+              (method url-fetch)
+              (uri (string-append "http://www.freedesktop.org/software/startup-notification/releases/startup-notification-"
+                                  version
+                                  ".tar.gz"))
+              (sha256
+               (base32
+                "0jmyryrpqb35y9hd5sgxqy2z0r1snw7d3ljw0jak0n0cjdz1yf9w"))))
+    (native-inputs
+     `(("pkg-config" ,pkg-config)))
+    (inputs
+     `(("libx11" ,libx11)
+       ("xcb-util" ,xcb-util)))
+    (build-system gnu-build-system)
+    (home-page "")
+    (synopsis "")
+    (description "")
+    (license bsd-style)))
 
 (define-public i3
   (package
@@ -101,7 +140,13 @@
        ("libevdev" ,libevdev)
        ("libyajl" ,libyajl)
        ("asciidoc" ,asciidoc)
-       ("xmlto" ,xmlto)))
+       ("xmlto" ,xmlto)
+       ("perl-pod-simple" ,perl-pod-simple)
+       ("docbook-xml" ,docbook-xml)
+       ("pcre" ,pcre)
+       ("libx11" ,libx11)
+       ("pango" ,pango)
+       ("cairo" ,cairo)))
     (native-inputs
      `(("perl" ,perl)
        ("pkg-config" ,pkg-config)))
