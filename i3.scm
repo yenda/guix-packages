@@ -78,7 +78,9 @@
     (build-system cmake-build-system)
     (home-page "https://lloyd.github.io/yajl/")
     (synopsis "C library for parsing JSON")
-    (description "Yet Another JSON Library.  YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a small validating JSON generator.")
+    (description "Yet Another JSON Library.  YAJL is a small
+event-driven (SAX-style) JSON parser written in ANSI C, and a small
+validating JSON generator.")
     (license isc)))
 
 
@@ -97,7 +99,9 @@
     (build-system perl-build-system)
     (home-page "http://search.cpan.org/~marcgreen/Pod-Simple/lib/Pod/Simple.pod")
     (synopsis "Parsing library for text in Pod format")
-    (description "Pod::Simple is a Perl library for parsing text in the Pod (plain old documentation) markup language that is typically used for writing documentation for Perl and for Perl modules.")
+    (description "Pod::Simple is a Perl library for parsing text in
+the Pod (plain old documentation) markup language that is typically
+used for writing documentation for Perl and for Perl modules.")
     (license (package-license perl))))
 
 
@@ -121,7 +125,10 @@
     (build-system gnu-build-system)
     (home-page "https://wiki.freedesktop.org/www/Software/startup-notification/")
     (synopsis "Reference implementation of the startup notification protocol")
-    (description "Startup-notification contains a reference implementation of the startup notification protocol.  The reference implementation is mostly under an X Window System style license, and has no special dependencies.")
+    (description "Startup-notification contains a reference
+implementation of the startup notification protocol.  The reference
+implementation is mostly under an X Window System style license, and
+has no special dependencies.")
     (license gpl2)))
 
 
@@ -140,7 +147,11 @@
     (build-system gnu-build-system)
     (home-page "http://software.schmorp.de/pkg/libev.html")
     (synopsis "An event loop that is loosely modelled after libevent")
-    (description "A full-featured and high-performance event loop that is loosely modelled after libevent, but without its limitations and bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode, auditd, the Deliantra MORPG Server and Client, and many other programs.")
+    (description "A full-featured and high-performance event loop that
+is loosely modelled after libevent, but without its limitations and
+bugs.  It is used in GNU Virtual Private Ethernet, rxvt-unicode,
+auditd, the Deliantra MORPG Server and Client, and many other
+programs.")
     (license
      (non-copyleft
       "file://LICENSE"
@@ -161,7 +172,12 @@
     (build-system gnu-build-system)
     (home-page "http://www.nongnu.org/confuse/")
     (synopsis "Configuration file parser library")
-    (description "A configuration file parser library. It supports sections and (lists of) values (strings, integers, floats, booleans or other sections), as well as some other features (such as single/double-quoted strings, environment variable expansion, functions and nested include statements).  It makes it very easy to add configuration file capability to a program using a simple API. ")
+    (description "A configuration file parser library. It supports
+sections and (lists of) values (strings, integers, floats, booleans or
+other sections), as well as some other features (such as
+single/double-quoted strings, environment variable expansion,
+functions and nested include statements).  It makes it very easy to
+add configuration file capability to a program using a simple API. ")
     (license isc)))
 
 
@@ -198,7 +214,13 @@
        ("asciidoc" ,asciidoc)))
     (home-page "http://i3wm.org/i3status/")
     (synopsis "Generating a status bar for i3bar, dzen2, xmobar or similar programs")
-    (description "i3status is a small program for generating a status bar for i3bar, dzen2, xmobar or similar programs.  It is designed to be very efficient by issuing a very small number of system calls, as one generally wants to update such a status line every second. This ensures that even under high load, your status bar is updated correctly.  Also, it saves a bit of energy by not hogging your CPU as much as spawning the corresponding amount of shell commands would.")
+    (description "i3status is a small program for generating a status
+bar for i3bar, dzen2, xmobar or similar programs.  It is designed to
+be very efficient by issuing a very small number of system calls, as
+one generally wants to update such a status line every second. This
+ensures that even under high load, your status bar is updated
+correctly.  Also, it saves a bit of energy by not hogging your CPU as
+much as spawning the corresponding amount of shell commands would.")
     (license bsd-3)))
 
 
@@ -243,5 +265,9 @@
        ("pkg-config" ,pkg-config)))
     (home-page "http://i3wm.org/")
     (synopsis "Improved tiling window manager")
-    (description "i3 is a tiling window manager, completely written from scratch.  The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license.  i3 is primarily targeted at advanced users and developers.")
+    (description "i3 is a tiling window manager, completely written
+from scratch.  The target platforms are GNU/Linux and BSD operating
+systems, our code is Free and Open Source Software (FOSS) under the
+BSD license.  i3 is primarily targeted at advanced users and
+developers.")
     (license bsd-3)))
