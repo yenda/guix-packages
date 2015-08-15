@@ -1,1 +1,9 @@
-This is readme.
+I use this repository to keep package definition for guix.
+
+These package are :
+- experiments that might later get into the official repository (and
+  there for be deleted here)
+- modified versions of existing package definitions for specific purposes
+- non-free software I desperately need for some reasons aka can't buy
+  a new computer, rewrite every piece of non-free software in the
+  world but still need it sorry RMS :(
